@@ -7,7 +7,9 @@ import java.util.Objects;
 public class World {
     private ArrayList<Animal> animals = new ArrayList<>();
     private ArrayList<Animal> animauxMorts = new ArrayList<>();
-    private ArrayList<Animal> newbornsAww = new ArrayList<>();
+    private ArrayList<Animal> newbornLions = new ArrayList<>();
+    // change it later cs its wrongggg
+    private ArrayList<Animal> newbornAntilopes = new ArrayList<>();
 
     private double herbe;
     private byte year = 0; // à revoir
@@ -56,6 +58,14 @@ public class World {
         return animauxMorts.size();
     }
 
+    public int getNewbornLions() {
+        return newbornLions.size();
+    }
+
+    public int getNewbornAntilopes() {
+        return newbornAntilopes.size();
+    }
+
     public double herbeGrow() {
         if (getHerbe() >= 4000000) {
             return 1000000;
@@ -82,8 +92,6 @@ public class World {
         // step 1: increment year
         year++;
 
-        System.out.println("we are at year " + year); // don't forget to remove this line
-
         // step 1.1: increment age of all animals
         for (Animal furrball : animals) {
             furrball.vieillir();
@@ -98,10 +106,15 @@ public class World {
 
         // step 2:  make the animals eat ** important **
 
-        /* step 3:  make the animals reproduce
-        * if they're 0 at birth make a list for the newborns and dump them in there.
-        * but don't forget to remove them (how should I go about it?) this code is getting long so im doing something wrong */
-
+        // step 3:  make the animals reproduce
+        // IM NEVER FIGURING THAT OUT...
+        for (Animal kms : animals) {
+            if (kms.reproduce().type == "Lion") {
+                newbornLions.add(kms.reproduce());
+            } else if (kms.reproduce().type == "Antilope") {
+                newbornAntilopes.add(kms.reproduce());
+            }
+        }
 
 
     }

@@ -27,5 +27,9 @@ public class Lion extends Animal {
         System.out.println("nothing here yet");
     }
 
-
+    // reproduce
+    @Override
+    public Lion reproduce() {
+        return (Lion) super.reproduce();
+    }
 }

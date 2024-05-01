@@ -18,7 +18,8 @@ public abstract class Animal {
         }
     }
 
-    public Animal reproduce() { // à revoir ** important **
+    public Animal reproduce() {
+        // this gotta be wrong
         if (age >= 2 && !hasReproduced) {
             hasReproduced = true;
             return switch (this.type) {
