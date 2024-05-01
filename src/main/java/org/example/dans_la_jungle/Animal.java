@@ -3,7 +3,7 @@ package org.example.dans_la_jungle;
 import java.util.List;
 
 public abstract class Animal {
-    protected byte age = 1;
+    protected byte age = 0;
     protected boolean isAlive = true;
     protected boolean hasReproduced = false;
 
@@ -13,10 +13,11 @@ public abstract class Animal {
 
     // complex methods
     public void vieillir() {
-        if (age == lifeExpectancy) {
+        age++;
+        System.out.println(type + " aged. Current age: " + age + "\nYears left to live: " + (lifeExpectancy - age));
+        if (age >= lifeExpectancy) {
             isAlive = false;
         }
-        age++;
     }
 
     public Animal reproduce() {

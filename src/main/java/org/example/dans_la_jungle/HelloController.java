@@ -36,40 +36,46 @@ public class HelloController {
     @FXML
     private TextField grassBirthrate;
 
-    // world instance (not sure about this either)
     private World world;
+
+
+    // utility methods
+    protected void refresh() {
+        currentYear.setText(String.valueOf(world.getYear()));
+        lionCount.setText(String.valueOf(world.getLionCount()));
+        antilopeCount.setText(String.valueOf(world.getAntilopeCount()));
+    }
+
+    protected void disable(boolean lightSwitch) {
+        startBtn.setDisable(lightSwitch);
+        lionBirthrate.setDisable(lightSwitch);
+        antilopeBirthrate.setDisable(lightSwitch);
+        grassBirthrate.setDisable(lightSwitch);
+        slayBtn.setDisable(!lightSwitch);
+    }
 
     @FXML
     public void initialize() {
-        // disable the slay button
         slayBtn.setDisable(true);
     }
-
 
     @FXML
     protected void onYearBtnClick() {
         world.incrementYear();
-        currentYear.setText(String.valueOf(world.getYear()));
+        refresh();
     }
 
     @FXML
     protected void onResetBtnClick() {
-        // clear the animals
         world.reset();
-        currentYear.setText(String.valueOf(world.getYear()));
+        refresh();
 
-        startBtn.setDisable(false);
-        lionBirthrate.setDisable(false);
-        antilopeBirthrate.setDisable(false);
-        grassBirthrate.setDisable(false);
+        disable(false);
     }
 
     @FXML
     protected void onStartBtnClick() {
-        startBtn.setDisable(true);
-        lionBirthrate.setDisable(true);
-        antilopeBirthrate.setDisable(true);
-        grassBirthrate.setDisable(true);
+        disable(true);
 
         // à revoir au cas où the user doesn't input a number
         int lionBirthRateValue = Integer.parseInt(lionBirthrate.getText());
@@ -79,8 +85,8 @@ public class HelloController {
         // nouvelle instance de monde
         world = new World(grassBirthRateValue);
 
-        world.addAnimal(new Lion(), lionBirthRateValue);
-        world.addAnimal(new Antilope(), antilopeBirthRateValue);
+        world.addAnimal("Lion", lionBirthRateValue);
+        world.addAnimal("Antilope", antilopeBirthRateValue);
 
         // change the labels
         lionCount.setText(String.valueOf(lionBirthRateValue));
@@ -92,6 +98,5 @@ public class HelloController {
         antilopeBirthrate.setText("");
         grassBirthrate.setText("");
 
-        slayBtn.setDisable(false);
     }
 }

@@ -1,9 +1,11 @@
 package org.example.dans_la_jungle;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class World {
     private ArrayList<Animal> animals = new ArrayList<>();
+    private ArrayList <Animal> animauxMorts = new ArrayList<>();
 
     private int herbe;
     private byte year = 0; // à revoir
@@ -11,6 +13,10 @@ public class World {
     public World(int herbeInitial) {
         this.animals = new ArrayList<>();
         this.herbe = herbeInitial;
+    }
+
+    public double getHerbe() {
+        return herbe;
     }
 
     public byte getYear() {
@@ -37,26 +43,23 @@ public class World {
         } return antilopeCount;
     }
 
-
-    public double getHerbe() {
-        return herbe;
+    public int getAnimauxMorts() {
+        return animauxMorts.size();
     }
 
-
-    public int animauxMorts() {
-        int deadAnimals = 0;
-        for (Animal animal : animals) {
-            if (!animal.isAlive) {
-                deadAnimals++;
-            }
-        } return deadAnimals;
-    }
 
 
     // complicated methods
-    public void addAnimal(Animal animal, int count) {
+    public void addAnimal(String animalType, int count) {
         for (int i = 0; i < count; i++) {
-            animals.add(animal);
+            switch (animalType) {
+                case "Lion":
+                    animals.add(new Lion());
+                    break;
+                case "Antilope":
+                    animals.add(new Antilope());
+                    break;
+            }
         }
     }
 
@@ -69,23 +72,19 @@ public class World {
     public void incrementYear() {
         // step 1: increment year
         year++;
+        System.out.println("we are at year " + year);
 
         // step 1.1: increment age of all animals
-        for (Animal animal : animals) {
-            animal.vieillir();
-
-            // 1.2: gestion des animaux morts
-            if (!animal.isAlive) {
-                animals.remove(animal);
+        List<Animal> deadAnimals = new ArrayList<>();
+        for (Animal rawrXD : animals) {
+            rawrXD.vieillir();
+            if (!rawrXD.isAlive) {
+                deadAnimals.add(rawrXD);
             }
-//            animal.manger();
-//        }
-//        // step 2: make the animals eat and reproduce
-//        for (Animal animal : animals) {
-//            animal.manger();
-//            animal.reproduce();
-//        }
         }
+        animals.removeAll(deadAnimals);
+
+        // step 2: make the animals eat and reproduce
 
     }
 
