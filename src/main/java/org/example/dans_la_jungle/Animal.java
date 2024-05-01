@@ -21,12 +21,7 @@ public abstract class Animal {
     public Animal reproduce() {
         // this gotta be wrong
         if (age >= 2 && !hasReproduced) {
-            hasReproduced = true;
-            return switch (this.type) {
-                case "Lion" -> new Lion();
-                case "Antilope" -> new Antilope();
-                default -> null;
-            };
+            System.out.println("nothing here yet");
         }
         return null;
     }

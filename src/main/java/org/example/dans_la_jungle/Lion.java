@@ -24,12 +24,13 @@ public class Lion extends Animal {
 //                this.isAlive = false; // if the lion didn't eat enough, dies.
 //            }
 //        }
-        System.out.println("nothing here yet");
+
     }
 
     // reproduce
     @Override
     public Lion reproduce() {
-        return (Lion) super.reproduce();
-    }
+//        if (age >= 2 && !hasReproduced) {
+            return new Lion();
+        }
 }

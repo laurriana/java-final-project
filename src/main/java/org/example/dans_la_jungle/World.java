@@ -107,14 +107,7 @@ public class World {
         // step 2:  make the animals eat ** important **
 
         // step 3:  make the animals reproduce
-        // IM NEVER FIGURING THAT OUT...
-        for (Animal kms : animals) {
-            if (kms.reproduce().type == "Lion") {
-                newbornLions.add(kms.reproduce());
-            } else if (kms.reproduce().type == "Antilope") {
-                newbornAntilopes.add(kms.reproduce());
-            }
-        }
+
 
 
     }

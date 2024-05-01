@@ -47,6 +47,7 @@ public class HelloController {
         deathValue.setText(String.valueOf(world.getAnimauxMorts()));
         grassValue.setText(String.valueOf(world.getHerbe()));
 
+    }
 
     protected void disable(boolean lightSwitch) {
         startBtn.setDisable(lightSwitch);
