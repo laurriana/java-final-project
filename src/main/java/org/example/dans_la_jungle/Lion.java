@@ -10,7 +10,7 @@ public class Lion extends Animal {
 
     // manger
     @Override
-     public void manger() {
+    public void manger() {
         byte antilopesEaten = 0;
 //        for (Animal antilope : antilopes) {
 //            if (antilope.isAlive) {

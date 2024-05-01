@@ -1,13 +1,15 @@
 package org.example.dans_la_jungle;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class World {
     private ArrayList<Animal> animals = new ArrayList<>();
-    private ArrayList <Animal> animauxMorts = new ArrayList<>();
+    private ArrayList<Animal> animauxMorts = new ArrayList<>();
+    private ArrayList<Animal> newbornsAww = new ArrayList<>();
 
-    private int herbe;
+    private double herbe;
     private byte year = 0; // à revoir
 
     public World(int herbeInitial) {
@@ -15,6 +17,13 @@ public class World {
         this.herbe = herbeInitial;
     }
 
+    public void reset() {
+        this.animals.clear();
+        this.herbe = 0;
+        this.year = 0;
+    }
+
+    // grass methods --> round the grass bcs 10 decimals is CRAZY
     public double getHerbe() {
         return herbe;
     }
@@ -23,31 +32,37 @@ public class World {
         return year;
     }
 
-    // i need a getLionCount() method and a getAntilopeCount() method
-
     public int getLionCount() {
         int lionCount = 0;
-        for ( Animal animal : animals ) {
+        for (Animal animal : animals) {
             if (Objects.equals(animal.type, "Lion")) { // it's animal.type == "Lion"
                 lionCount++;
             }
-        } return lionCount;
+        }
+        return lionCount;
     }
 
     public int getAntilopeCount() {
         int antilopeCount = 0;
-        for ( Animal animal : animals ) {
+        for (Animal animal : animals) {
             if (Objects.equals(animal.type, "Antilope")) {
                 antilopeCount++;
             }
-        } return antilopeCount;
+        }
+        return antilopeCount;
     }
 
     public int getAnimauxMorts() {
         return animauxMorts.size();
     }
 
-
+    public double herbeGrow() {
+        if (getHerbe() >= 4000000) {
+            return 1000000;
+        } else {
+            return getHerbe() * 2.2;
+        }
+    }
 
     // complicated methods
     public void addAnimal(String animalType, int count) {
@@ -63,28 +78,31 @@ public class World {
         }
     }
 
-    public void reset() {
-        this.animals.clear();
-        this.herbe = 0;
-        this.year = 0;
-    }
-
     public void incrementYear() {
         // step 1: increment year
         year++;
-        System.out.println("we are at year " + year);
+
+        System.out.println("we are at year " + year); // don't forget to remove this line
 
         // step 1.1: increment age of all animals
-        List<Animal> deadAnimals = new ArrayList<>();
-        for (Animal rawrXD : animals) {
-            rawrXD.vieillir();
-            if (!rawrXD.isAlive) {
-                deadAnimals.add(rawrXD);
+        for (Animal furrball : animals) {
+            furrball.vieillir();
+            if (!furrball.isAlive) {
+                animauxMorts.add(furrball);
             }
         }
-        animals.removeAll(deadAnimals);
+        animals.removeAll(animauxMorts);
 
-        // step 2: make the animals eat and reproduce
+        // step 1.1.1: I guess the grass too
+        herbe = herbeGrow();
+
+        // step 2:  make the animals eat ** important **
+
+        /* step 3:  make the animals reproduce
+        * if they're 0 at birth make a list for the newborns and dump them in there.
+        * but don't forget to remove them (how should I go about it?) this code is getting long so im doing something wrong */
+
+
 
     }
 

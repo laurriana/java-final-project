@@ -1,7 +1,5 @@
 package org.example.dans_la_jungle;
 
-import java.util.List;
-
 public abstract class Animal {
     protected byte age = 0;
     protected boolean isAlive = true;
@@ -20,7 +18,7 @@ public abstract class Animal {
         }
     }
 
-    public Animal reproduce() {
+    public Animal reproduce() { // à revoir ** important **
         if (age >= 2 && !hasReproduced) {
             hasReproduced = true;
             return switch (this.type) {
@@ -33,6 +31,6 @@ public abstract class Animal {
     }
 
     public void manger() {
-        System.out.println("yasss bitch we eating good");
+        System.out.println("yasss girl we eating good"); // don't forget to remove this line too
     }
 }

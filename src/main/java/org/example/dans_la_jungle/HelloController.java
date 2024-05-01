@@ -5,8 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import java.util.ArrayList;
-
 public class HelloController {
     // labels
     @FXML
@@ -15,6 +13,8 @@ public class HelloController {
     private Label antilopeCount;
     @FXML
     private Label grassValue;
+    @FXML
+    private Label deathValue;
 
     @FXML
     private Label newbornLions;
@@ -44,6 +44,8 @@ public class HelloController {
         currentYear.setText(String.valueOf(world.getYear()));
         lionCount.setText(String.valueOf(world.getLionCount()));
         antilopeCount.setText(String.valueOf(world.getAntilopeCount()));
+        deathValue.setText(String.valueOf(world.getAnimauxMorts()));
+        grassValue.setText(String.valueOf(world.getHerbe()));
     }
 
     protected void disable(boolean lightSwitch) {
@@ -77,21 +79,16 @@ public class HelloController {
     protected void onStartBtnClick() {
         disable(true);
 
-        // à revoir au cas où the user doesn't input a number
-        int lionBirthRateValue = Integer.parseInt(lionBirthrate.getText());
-        int antilopeBirthRateValue = Integer.parseInt(antilopeBirthrate.getText());
-        int grassBirthRateValue = Integer.parseInt(grassBirthrate.getText());
-
         // nouvelle instance de monde
-        world = new World(grassBirthRateValue);
+        world = new World(Integer.parseInt(grassBirthrate.getText()));
 
-        world.addAnimal("Lion", lionBirthRateValue);
-        world.addAnimal("Antilope", antilopeBirthRateValue);
+        world.addAnimal("Lion", Integer.parseInt(lionBirthrate.getText()));
+        world.addAnimal("Antilope", Integer.parseInt(antilopeBirthrate.getText()));
 
         // change the labels
-        lionCount.setText(String.valueOf(lionBirthRateValue));
-        antilopeCount.setText(String.valueOf(antilopeBirthRateValue));
-        grassValue.setText(String.valueOf(grassBirthRateValue));
+        lionCount.setText(String.valueOf(Integer.parseInt(lionBirthrate.getText())));
+        antilopeCount.setText(String.valueOf(Integer.parseInt(antilopeBirthrate.getText())));
+        grassValue.setText(String.valueOf(Integer.parseInt(grassBirthrate.getText())));
 
         // empty inputs
         lionBirthrate.setText("");
