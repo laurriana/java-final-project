@@ -14,18 +14,19 @@ public class Antilope extends Animal {
 
     // reproduce
     @Override
-    public void reproduce(ArrayList<Animal> animals) {
-//        if (age >= 2 && !hasReproduced) {
-//        return new Antilope();
-        /*
-            1. cannot be the same animal (no selfcest)
-            2. gotta be of age
-            3. not reproduce
-            4. gotta be the same for the partner
-            5. change the hasReproduced
-            6. @ end of year, changed hasReproduced back to false
-         */
-
+    public Antilope reproduce(ArrayList<Animal> animals, ArrayList<Animal> newborns) {
+        if (age >= 2 && !hasReproduced) {
+            for (Animal animal : animals) {
+                if (animal.type.equals("Antilope") && !animal.hasReproduced && animal.age >= 2 && !animal.equals(this) && animal.isAlive) {
+                    animal.hasReproduced = true;
+                    hasReproduced = true;
+                    Antilope newborn = new Antilope();
+                    newborns.add(newborn);
+                    return newborn;
+                }
+            }
+        }
+        return null;
     }
 
 }

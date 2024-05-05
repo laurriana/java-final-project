@@ -1,5 +1,7 @@
 package org.example.dans_la_jungle;
 
+import java.util.ArrayList;
+
 public abstract class Animal {
     protected byte age = 0;
     protected boolean isAlive = true;
@@ -8,25 +10,18 @@ public abstract class Animal {
     protected byte lifeExpectancy;
     protected String type;
 
-
-    // complex methods
     public void vieillir() {
         age++;
-        System.out.println(type + " aged. Current age: " + age + "\nYears left to live: " + (lifeExpectancy - age));
-        if (age >= lifeExpectancy) {
+        if (age == lifeExpectancy) {
             isAlive = false;
         }
     }
 
-    public Animal reproduce() {
-        // this gotta be wrong
-        if (age >= 2 && !hasReproduced) {
-            System.out.println("nothing here yet");
-        }
+    public Animal reproduce(ArrayList<Animal> animals, ArrayList<Animal> newborns) {
         return null;
     }
 
-    public void manger() {
-        System.out.println("yasss girl we eating good"); // don't forget to remove this line too
+    public void manger(ArrayList<Animal> animals, ArrayList<Animal> animauxMorts) {
+
     }
 }
