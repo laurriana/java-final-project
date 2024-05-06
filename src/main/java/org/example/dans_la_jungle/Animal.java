@@ -2,7 +2,7 @@ package org.example.dans_la_jungle;
 
 import java.util.ArrayList;
 
-public abstract class Animal {
+public class Animal {
     protected byte age = 0;
     protected boolean isAlive = true;
     protected boolean hasReproduced = false;

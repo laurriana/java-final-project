@@ -9,7 +9,15 @@ public class Antilope extends Animal {
     }
 
     public int mangerHerbe(int herbeDispo) {
-        return herbeDispo - 100;
+        if (!this.isAlive) { // a dead antilope can't eat
+            System.out.println("a dead antilope can't eat </3");
+            return herbeDispo;
+        } else if (herbeDispo < 100) { // not enough grass for the antilope to eat
+            System.out.println("not enough grass for the antilope to eat");
+            return herbeDispo;
+    } else {
+            return herbeDispo - 100;
+        }
     }
 
     // reproduce

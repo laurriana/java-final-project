@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class HelloController {
+public class Simulation {
     @FXML
     private Label lionCount;
     @FXML
@@ -47,7 +47,8 @@ public class HelloController {
         currentYear.setText(String.valueOf(world.getYear()));
         lionCount.setText(String.valueOf(world.getLionCount()));
         antilopeCount.setText(String.valueOf(world.getAntilopeCount()));
-        deathValue.setText(String.valueOf(world.getAnimauxMorts()));
+//        deathValue.setText(String.valueOf(world.getAnimauxMorts()));
+        deathValue.setText(String.valueOf(world.getTempDeadAnimals())); // à revoir
         grassValue.setText(String.valueOf(world.getHerbe()));
 
         newbornLions.setText(String.valueOf(world.getNewbornLions()));
@@ -73,11 +74,11 @@ public class HelloController {
     protected void onStartBtnClick() {
         if (lionBirthrate.getText().isEmpty() || antilopeBirthrate.getText().isEmpty() || grassBirthrate.getText().isEmpty()) {
             errMsg.setVisible(true);
-        } else if (Integer.parseInt(grassBirthrate.getText()) < Integer.parseInt(antilopeBirthrate.getText()) * 100) {
-            grassErr.setVisible(true);
+//        } else if (Integer.parseInt(grassBirthrate.getText()) < Integer.parseInt(antilopeBirthrate.getText()) * 100) {
+//            grassErr.setVisible(true);
         } else {
             errMsg.setVisible(false);
-            grassErr.setVisible(false);
+//            grassErr.setVisible(false);
 
             disable(true);
 

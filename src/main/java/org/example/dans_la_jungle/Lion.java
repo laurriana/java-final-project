@@ -22,6 +22,10 @@ public class Lion extends Animal {
                 }
             }
         }
+        // condition: if a lion didn't get to eat 2 antilopes, it DIES
+        if (antilopesAte < 2) {
+            this.isAlive = false;
+        }
     }
 
     // reproduce

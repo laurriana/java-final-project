@@ -11,7 +11,9 @@ public class World {
     private int newbornLions = 0;
     private int newbornAntilopes = 0;
     private double herbe;
+    private int tempDeadAnimals = 0; // à revoir
     private byte year = 0;
+
 
     public World(int herbeInitial) {
         this.herbe = herbeInitial;
@@ -73,6 +75,9 @@ public class World {
     public int getAnimauxMorts() {
         return animauxMorts.size();
     }
+    public int getTempDeadAnimals () {
+        return tempDeadAnimals;
+    } // à revoir
 
     // complicated methods
     public void addAnimal(String animalType, int count) {
@@ -96,11 +101,15 @@ public class World {
         Random rand = new Random(1);
         Collections.shuffle(animals, rand);
 
-        // step 1.2: reset newborn counts
+        // step 1.2: (　･ω･)☞ reset newborn counts
         newbornLions = 0;
         newbornAntilopes = 0;
+        tempDeadAnimals = 0;
 
-        // step 1.3: increment age of all animals
+        // step 1.2.1 should we reset the death toll too?
+
+
+        // step 1.3: make the animals age ٩(ˊ〇ˋ*)و
         for (Animal animal : animals) {
             animal.vieillir();
             if (!animal.isAlive) {
@@ -109,11 +118,10 @@ public class World {
         }
         animals.removeAll(animauxMorts);
 
-        // step 1.4: the grass too
+        // step 1.4: and the grass too (´･ᴗ･ ` )
         herbe = herbeGrow();
 
-        // step 2:  make the animals eat ** important **
-        // temp array again i guess
+        // step 2:  make the animals eat (っ˘ڡ˘ς) lions eat first ? (ง •_•)ง
         for (Animal animal : animals) {
             if (animal.type.equals("Lion")) {
                 animal.manger(animals, animauxMorts);
@@ -126,15 +134,16 @@ public class World {
             }
         }
 
-        // step 2.5 manage the dead animals
+        // step 2.5 manage the dead animals (×﹏×)
         for (Animal animal : animals) {
             if (!animal.isAlive) {
                 animauxMorts.add(animal);
+                tempDeadAnimals++; // à revoir
             }
         }
         animals.removeAll(animauxMorts);
 
-        // step 3:  make the animals reproduce
+        // step 3:  make the animals reproduce ( ͡° ͜ʖ ͡°)
         ArrayList<Animal> temp = new ArrayList<>(animals);
         ArrayList<Animal> newborns = new ArrayList<>();
 
@@ -148,7 +157,7 @@ public class World {
         animals.addAll(newborns);
         manageNewborns();
 
-        // step 4: reset the hasReproduced
+        // step 4: reset the hasReproduced? ┐('～`;)┌
 
         // step 5: shuffle again
         Collections.shuffle(animals, rand);

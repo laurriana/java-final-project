@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="497.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.dans_la_jungle.Simulation">
+   <Label alignment="CENTER" layoutX="93.0" layoutY="-9.0" prefHeight="82.0" prefWidth="417.0" text="Survival of the fittest" textAlignment="CENTER">
+      <font>
+         <Font name="Rock Salt Regular" size="28.0" />
+      </font>
+   </Label>
+   <TextField fx:id="lionBirthrate" layoutX="26.0" layoutY="134.0" prefHeight="26.0" prefWidth="115.0" />
+   <TextField fx:id="antilopeBirthrate" layoutX="243.0" layoutY="134.0" prefHeight="26.0" prefWidth="115.0" />
+   <TextField fx:id="grassBirthrate" layoutX="460.0" layoutY="134.0" prefHeight="26.0" prefWidth="115.0" />
+   <Label layoutX="26.0" layoutY="160.0" opacity="0.6" prefHeight="17.0" prefWidth="115.0" text="LIONS">
+      <font>
+         <Font name="Clear Brain" size="11.0" />
+      </font>
+   </Label>
+   <Label layoutX="243.0" layoutY="160.0" opacity="0.6" prefHeight="17.0" prefWidth="115.0" text="ANTILOPES">
+      <font>
+         <Font name="Clear Brain" size="11.0" />
+      </font>
+   </Label>
+   <Label layoutX="460.0" layoutY="160.0" opacity="0.6" prefHeight="17.0" prefWidth="115.0" text="HERBES (en m²)">
+      <font>
+         <Font name="Clear Brain" size="11.0" />
+      </font>
+   </Label>
+   <Button fx:id="slayBtn" layoutX="223.0" layoutY="194.0" mnemonicParsing="false" onAction="#onYearBtnClick" text="HIT THE SLAY BUTTON!">
+      <font>
+         <Font name="CQ Mono" size="13.0" />
+      </font></Button>
+   <Label fx:id="currentYear" layoutX="365.0" layoutY="240.0" text="0">
+      <font>
+         <Font name="CQ Mono" size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="13.0" layoutY="286.0" prefHeight="17.0" prefWidth="154.0" text="SURVIVANTS" textAlignment="CENTER" underline="true">
+      <font>
+         <Font name="System Bold" size="16.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="433.0" layoutY="286.0" prefHeight="17.0" prefWidth="154.0" text="MORTS" textAlignment="CENTER" underline="true">
+      <font>
+         <Font name="System Bold" size="16.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="223.0" layoutY="286.0" prefHeight="17.0" prefWidth="154.0" text="NOUVEAUX NÉS" textAlignment="CENTER" underline="true">
+      <font>
+         <Font name="System Bold" size="16.0" />
+      </font>
+   </Label>
+   <Label layoutX="79.0" layoutY="327.0" text="LIONS">
+      <font>
+         <Font name="Clear Brain" size="13.0" />
+      </font></Label>
+   <Label layoutX="79.0" layoutY="365.0" text="ANTILOPES">
+      <font>
+         <Font name="Clear Brain" size="13.0" />
+      </font></Label>
+   <Label fx:id="deathValue" alignment="CENTER" layoutX="433.0" layoutY="316.0" prefHeight="17.0" prefWidth="154.0" text="0" textAlignment="CENTER">
+      <font>
+         <Font name="CQ Mono" size="13.0" />
+      </font>
+   </Label>
+   <Button layoutX="341.0" layoutY="416.0" mnemonicParsing="false" onAction="#onResetBtnClick" text="RESET">
+      <font>
+         <Font name="CQ Mono" size="13.0" />
+      </font></Button>
+   <Label fx:id="newbornLions" alignment="CENTER" layoutX="223.0" layoutY="327.0" prefHeight="17.0" prefWidth="154.0" text="0" textAlignment="CENTER">
+      <font>
+         <Font name="CQ Mono" size="13.0" />
+      </font></Label>
+   <Label fx:id="newbornAntilopes" alignment="CENTER" layoutX="223.0" layoutY="366.0" prefHeight="17.0" prefWidth="154.0" text="0" textAlignment="CENTER">
+      <font>
+         <Font name="CQ Mono" size="13.0" />
+      </font></Label>
+   <Label alignment="CENTER" layoutX="433.0" layoutY="356.0" prefHeight="17.0" prefWidth="154.0" text="HERBE" textAlignment="CENTER" underline="true">
+      <font>
+         <Font name="System Bold" size="16.0" />
+      </font>
+   </Label>
+   <Label fx:id="grassValue" alignment="CENTER" layoutX="433.0" layoutY="386.0" prefHeight="17.0" prefWidth="154.0" text="0" textAlignment="CENTER">
+      <font>
+         <Font name="CQ Mono" size="13.0" />
+      </font>
+   </Label>
+   <Label fx:id="lionCount" layoutX="41.0" layoutY="327.0" text="0">
+      <font>
+         <Font name="CQ Mono" size="13.0" />
+      </font></Label>
+   <Label fx:id="antilopeCount" layoutX="41.0" layoutY="365.0" text="0">
+      <font>
+         <Font name="CQ Mono" size="13.0" />
+      </font></Label>
+   <Button fx:id="startBtn" layoutX="189.0" layoutY="416.0" mnemonicParsing="false" onAction="#onStartBtnClick" text="START THE RAPTURE">
+      <font>
+         <Font name="CQ Mono" size="13.0" />
+      </font></Button>
+   <Label fx:id="errMsg" alignment="CENTER" layoutX="169.0" layoutY="100.0" prefHeight="17.0" prefWidth="256.0" text="ERREUR: Veuillez remplir chaque case." textAlignment="CENTER" textFill="RED">
+      <font>
+         <Font name="CQ Mono" size="13.0" />
+      </font></Label>
+   <Label fx:id="grassErr" alignment="CENTER" layoutX="429.0" layoutY="193.0" prefHeight="26.0" prefWidth="162.0" style="-fx-line-spacing: -1;" text="hmm, pas sûre qu'on pourra nourrir toutes ces antilopes..." textAlignment="CENTER" textFill="#1d971f" wrapText="true">
+      <font>
+         <Font name="CQ Mono" size="10.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="176.0" layoutY="60.0" prefHeight="17.0" prefWidth="242.0" text="coded by yours truly (meeeee :3)" textAlignment="CENTER">
+      <font>
+         <Font name="Love Me Valentines" size="11.0" />
+      </font>
+   </Label>
+   <Label layoutX="223.0" layoutY="240.0" text="ANNÉE EN COURS">
+      <font>
+         <Font name="CQ Mono" size="18.0" />
+      </font>
+   </Label>
+   <effect>
+      <DropShadow />
+   </effect>
+</AnchorPane>
